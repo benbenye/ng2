@@ -15,7 +15,7 @@ export class PostService {
 
   refreshPosts() {
     let postsResponse = this._http.get('/Category/getCatList')
-      .map(res => res.json());
+      .map(res => res.json().data);
 
     postsResponse.subscribe(
         (posts) => {

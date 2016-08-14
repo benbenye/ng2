@@ -5,6 +5,7 @@ let jwt = require('jsonwebtoken');
 let config = require('./config');
 let jwtMiddleware = require('koa-jwt')({ secret: config.jwt_secret });
 let proxy = require('koa-proxy');
+let pixie = require('koa-pixie-proxy');
 
 let posts = [
   {
@@ -31,11 +32,9 @@ function findPost(id) {
   return posts.find((post) => post._id == id);
 }
 
-router.get('/Category/getCatList',proxy({
-  url: 'http://api.chunbo.com/Category/getCatList'
-}), function*() {
-  this.body = posts;
-});
+// router.get('/Category/getCatList',proxy({
+//  url: 'http://api.chunbo.com/Category/getCatList'
+// }));
 
 
 router.get('/post/:id', function*() {
