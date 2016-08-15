@@ -23,7 +23,7 @@ export class PostListComponent {
     this._postService.refreshPosts();
   }
 
-  getRemotePosts() {
+  getRemoteIndex() {
     return this._postService.remotePosts;
   }
 }

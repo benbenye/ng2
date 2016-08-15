@@ -1,26 +1,25 @@
+/**
+ * Created by bby on 16/8/15.
+ */
 import { Component, ChangeDetectionStrategy, Input } from '@angular/core';
 import { ROUTER_DIRECTIVES } from '@angular/router';
 
-import template from './post-list-item.template.html';
+import template from './index-lc-list.template.html';
 import { ShortDescriptionPipe } from '../../../pipes/short-description.pipe';
 import { UserService } from '../../../auth';
-import { ClickCounterDirective } from '../../directives/click-counter.directive';
 
 @Component({
-  selector: 'post-list-item',
+  selector: 'index-lc-list',
   template: template,
   changeDetection: ChangeDetectionStrategy.OnPush,
-  directives: [ROUTER_DIRECTIVES, ClickCounterDirective],
+  directives: [ROUTER_DIRECTIVES],
   pipes: [ShortDescriptionPipe]
 })
-export class PostListItemComponent {
-  @Input() post;
+export class IndexLcListComponent {
+@Input() index;
 
   constructor(userService: UserService) {
     this.userService = userService;
   }
 
-  getLoggedIn() {
-    return this.userService.getLoggedIn();
-  }
 }

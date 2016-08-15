@@ -3,7 +3,7 @@
 
         <h1>Posts <a [routerLink]="['new']" *ngIf="userService.getLoggedIn() | async" class="btn btn-primary pull-right">New post</a></h1>
         <div class="list-group">
-            <post-list-item *ngFor="let post of getRemotePosts() | async" [post]="post"></post-list-item>
+            <post-list-item *ngFor="let post of getRemoteIndex() | async" [post]="post"></post-list-item>
         </div>
     </div>
 </div>

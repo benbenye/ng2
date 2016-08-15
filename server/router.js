@@ -37,7 +37,7 @@ function findPost(id) {
 // }));
 
 
-router.get('/post/:id', function*() {
+router.get('/index/:id', function*() {
   let foundPost = findPost(this.params.id);
 
   if (foundPost) {
@@ -48,7 +48,7 @@ router.get('/post/:id', function*() {
   }
 });
 
-router.post('/post/:id', function*() {
+router.post('/index/:id', function*() {
   let foundPost = findPost(this.params.id);
 
   if (foundPost) {
@@ -61,7 +61,7 @@ router.post('/post/:id', function*() {
 });
 
 
-router.post('/post', jwtMiddleware, function*() {
+router.post('/index', jwtMiddleware, function*() {
   posts.unshift(Object.assign(
     { },
     this.request.body,

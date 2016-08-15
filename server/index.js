@@ -13,8 +13,8 @@ let app = koa();
 app.use(staticServe(config.staticPath));
 
 app.use(proxy({
-  host: 'http://api.chunbo.com',
-  match:/^\/Category/
+  host: 'http://cms.chunbo.com',
+  match:/^\/CmsHome/
 }));
 
 app.use(proxy({

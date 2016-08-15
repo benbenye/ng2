@@ -8,8 +8,11 @@ import { LoginComponent } from '../auth/components/login/login.component';
 import { LoggedInGuard } from './guards/logged-in.guard';
 import { LoggedOutGuard } from './guards/logged-out.guard';
 
+import { IndexComponent } from '../index/components/index-index/index-index.component'
+
 export const routes = [
-  { path: '', component: PostListComponent, terminal: true },
+  { path: '', component: IndexComponent, terminal: true },
+  // { path: '', components: PostListComponent, terminal: true },
   { path: 'new', component: PostNewComponent, canActivate: [LoggedInGuard] },
   { path: 'edit/:id', component: PostEditComponent, canActivate: [LoggedInGuard] },
   { path: 'about', component: AboutComponent },

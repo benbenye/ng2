@@ -1,0 +1,48 @@
+@import "core.scss";
+/*
+ * 块居中
+ */
+.marginLRAuto {
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.borderRadius4 {
+  border-radius: $borderRaduio4;
+}
+
+.borderRadius8 {
+  border-radius: $borderRaduio8;
+}
+
+.borderTopLeftRadius4 {
+  border-top-left-radius: $borderRaduio4;
+}
+
+.borderTopRightRadius4 {
+  border-top-right-radius: $borderRaduio4;
+}
+
+.borderBottomRightRadius4 {
+  border-bottom-right-radius: $borderRaduio4;
+}
+
+.borderBottomLeftRadius4 {
+  border-bottom-right-radius: $borderRaduio4;
+}
+
+@mixin borderTopLeftRadius8 {
+  border-top-left-radius: $borderRaduio8;
+}
+
+@mixin borderTopRightRadius8 {
+  border-top-right-radius: $borderRaduio8;
+}
+
+@mixin borderBottomRightRadius8 {
+  border-bottom-right-radius: $borderRaduio8;
+}
+
+@mixin borderBottomLeftRadius8 {
+  border-bottom-right-radius: $borderRaduio8;
+}

@@ -1,7 +1,7 @@
-<div class="list-group-item post-item" click-counter [id]="'post-' + post.category_id" >
-    <a [routerLink]="['edit', post._id ]" *ngIf="getLoggedIn() | async" class="btn btn-default pull-right">Edit</a>
-    <a href="{{ post.back_img }}" target="_blank">
-        <h4 class="list-group-item-heading"><img src="http://i1.chunboimg.com/{{ post.back_img }}" width="20" alt="">{{ post.name }}</h4>
+<div class="list-group-item post-item" click-counter [id]="'post-' + post.lc_header.cid" >
+    <a [routerLink]="['edit', post.lc_header.cid ]" *ngIf="getLoggedIn() | async" class="btn btn-default pull-right">Edit</a>
+    <a href="{{ post.lc_header.link }}" target="_blank">
+        <h4 class="list-group-item-heading"><img src="http://i1.chunboimg.com/{{ post.lc_header.icon_image_url }}" width="20" alt="">{{ post.lc_header.title }}</h4>
     </a>
-    <p class="list-group-item-text">{{ post.description | short_description }}</p>
+    <p class="list-group-item-text">{{ post.lc_header.description | short_description }}</p>
 </div>

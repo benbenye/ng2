@@ -3,7 +3,7 @@ import { RequestMethod, Headers } from '@angular/http';
 import { Injector } from '@angular/core';
 import { Http, BaseRequestOptions, Response, ResponseOptions } from '@angular/http';
 
-import { PostService } from './post.service';
+import { PostService } from './index.service';
 
 import { AUTH_PROVIDERS, RequestService } from '../../../auth';
 

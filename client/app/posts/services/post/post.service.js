@@ -14,8 +14,13 @@ export class PostService {
   }
 
   refreshPosts() {
-    let postsResponse = this._http.get('/Category/getCatList')
-      .map(res => res.json().data);
+    let postsResponse = this._http.get('/CmsHome/getHomeData/site_id/1')
+      .map(res => {
+        let lcObj = res.json().lc;
+        return Object.keys(lcObj).sort((a,b)=>b-a).map(e => {
+          return lcObj[e]
+      })
+      });
 
     postsResponse.subscribe(
         (posts) => {
@@ -30,7 +35,7 @@ export class PostService {
 
   addPost(post) {
     return this._http
-      .post('/post', JSON.stringify(post), { headers: this._request.getAuthHeaders() })
+      .post('/index', JSON.stringify(post), { headers: this._request.getAuthHeaders() })
       .map(res => res.json());
   }
 

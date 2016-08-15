@@ -12,6 +12,8 @@ import { CORE_PROVIDERS } from './app/core';
 import { AUTH_PROVIDERS } from './app/auth';
 import { POSTS_PROVIDERS } from './app/posts';
 
+import { INDEX_PROVIDERS } from './app/index';
+
 if (ENVIRONMENT === 'production') {
   enableProdMode();
 }
@@ -24,6 +26,7 @@ bootstrap(AppComponent, [
   APP_ROUTES_PROVIDER,
   AUTH_PROVIDERS,
   POSTS_PROVIDERS,
+  INDEX_PROVIDERS,
   CORE_PROVIDERS,
 
   { provide: LocationStrategy, useClass: HashLocationStrategy },

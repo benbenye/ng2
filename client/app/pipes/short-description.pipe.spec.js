@@ -50,7 +50,7 @@ describe('ShortDescriptionPipe', () => {
 
       fixture.detectChanges();
 
-      expect(element.querySelector('#post-description').innerText).toBe(expectedShortenedText);
+      expect(element.querySelector('#index-description').innerText).toBe(expectedShortenedText);
     });
   });
 });

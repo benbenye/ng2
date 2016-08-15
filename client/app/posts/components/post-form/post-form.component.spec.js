@@ -37,9 +37,9 @@ describe('FormComponent', () => {
   let builder;
 
   function assertInputFields(element) {
-    expect(element.querySelector('#post-name').value).toBe(examplePost.name);
-    expect(element.querySelector('#post-website').value).toBe(examplePost.website);
-    expect(element.querySelector('#post-description').value).toBe(examplePost.description);
+    expect(element.querySelector('#index-name').value).toBe(examplePost.name);
+    expect(element.querySelector('#index-website').value).toBe(examplePost.website);
+    expect(element.querySelector('#index-description').value).toBe(examplePost.description);
   }
 
   beforeEach(() => {
@@ -124,7 +124,7 @@ describe('FormComponent', () => {
       assertInputFields(element);
     });
 
-    it('should notify parent component when submit button is clicked', () => {
+    it('should notify parent components when submit button is clicked', () => {
       let fixture = builder.createSync(TestComponent);
       let component = fixture.componentInstance;
       let element = fixture.nativeElement;
