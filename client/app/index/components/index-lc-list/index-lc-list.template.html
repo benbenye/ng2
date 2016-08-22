@@ -1,1 +1,42 @@
-<div>dddd</div>
+<div class="screen w_1080">
+  <!--楼层头-->
+  <div class="screen_name">
+    <a href="/list/index/cid/{{ index.lc_header.cid }}?src=index-lc1-A"><span class="screen_more">去逛逛 <span>›</span></span>
+      <img alt="" src="http://i0.chunboimg.com/{{ index.lc_header.icon_image_url }}">
+      <strong><span>/</span>{{ index.lc_header.title }}</strong>
+      <span class="eng_span">{{ index.lc_header.title_en }}</span>
+      <strong><span>/</span></strong><span class="c_90">{{ index.lc_header.description }}</span>
+    </a>
+  </div>
+  <div class="screen_top clearfix">
+    <!--主爆图-->
+    <div class="one_pic">
+      <a target="_blank" href="{{ index.lc_main_image.image_link }}?src=index-lc1-B" class="cb-lazy-loading-bg"><img src="http://i0.chunboimg.com/{{ index.lc_main_image.image_url }}" width="650" height="300" class="cb-lazy cb-lazy-img loaded"></a>
+    </div>
+    <!--次爆品-->
+    <div class="one_shop">
+      <a cbclick="1-7" target="_blank" href="/product/{{ index.product_list[0].product_id }}?src=index-lc1-C" class="img cb-lazy-loading-bg">
+        <img data-original="http://i3.chunboimg.com/" alt="" width="160" height="160" class="cb-lazy cb-lazy-img loaded" src="http://i1.chunboimg.com/{{ index.product_list[0].img }}">
+        <i cbclick="1-7" class="add-cart" >加入购物车</i>
+      </a>
+      <div class="one_shop_right">
+        <p class="name">{{ index.product_list[0].name }}</p>
+        <h4><a target="_blank" href="/product/{{ index.product_list[0].product_id }}?src=index-lc1-C">{{ index.product_list[0].subname }}</a></h4>
+        <p class="price">
+          <b *ngIf="index.product_list[0].sale_price !== '0.00'" class="chunbo chunbo_price">¥ {{ index.product_list[0].sale_price }}</b>
+          <del *ngIf="index.product_list[0].sale_price !== '0.00'">{{index.product_list[0].chunbo_price}}</del>
+          <strong *ngIf="index.product_list[0].sale_price == '0.00'" class="chunbo chunbo_price">¥ {{ index.product_list[0].chunbo_price }}</strong>&nbsp;&nbsp;<span>{{ index.product_list[0].specifications }}</span>
+        </p>
+        <p class="message"><span>买手语录：</span>{{ index.product_list[0].buyer_say }}</p>
+        <div class="icon_pop">
+        </div>
+      </div>
+    </div>
+  </div>
+  <!--商品列表-->
+  <div class="shop_list">
+    <ul class="clearfix">
+        <product-list-item *ngFor="let item of index.product_list.slice(1)" [item]="item"></product-list-item>
+    </ul>
+  </div>
+</div>

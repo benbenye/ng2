@@ -4,23 +4,25 @@
 import { Component, ChangeDetectionStrategy, Input } from '@angular/core';
 import { ROUTER_DIRECTIVES } from '@angular/router';
 
-import template from './index-lc-list.template.html';
+import template from './product-list-item.template.html';
 import { ShortDescriptionPipe } from '../../../pipes/short-description.pipe';
 import { UserService } from '../../../auth';
-import { ProductListItemComponent } from '../../../product/components/product-list-item/product-list-item.component'
 
 @Component({
-  selector: 'index-lc-list',
+  selector: 'product-list-item',
   template: template,
   changeDetection: ChangeDetectionStrategy.OnPush,
-  directives: [ROUTER_DIRECTIVES,ProductListItemComponent],
+  directives: [ROUTER_DIRECTIVES],
   pipes: [ShortDescriptionPipe]
 })
-export class IndexLcListComponent {
-@Input() index;
+export class ProductListItemComponent {
+@Input() item;
 
   constructor(userService: UserService) {
     this.userService = userService;
   }
 
 }
+/**
+ * Created by bby on 16/8/18.
+ */

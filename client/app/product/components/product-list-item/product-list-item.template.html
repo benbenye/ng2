@@ -1,0 +1,18 @@
+<li>
+  <a cbclick="1-7" target="_blank" href="/product/{{item.product_id}}?src=index-lc1-D&amp;src_pos=d2"
+     class="img cb-lazy-loading-bg">
+    <img src="http://i1.chunboimg.com/{{item.img}}" alt="" width="120" height="120"
+         class="cb-lazy cb-lazy-img loaded">
+    <i cbclick="1-7" class="add-cart" data-pid="18509" data-sku="1006750" style="bottom: -30px; opacity: 0;">加入购物车</i>
+  </a>
+  <p class="name">{{item.subname}}</p>
+  <h4><a target="_blank" href="/product/{{item.product_id}}">{{item.name}}</a></h4>
+  <p class="price">
+    <strong *ngIf="item.sale_price !== '0.00'" class="c_f6">¥ {{item.sale_price}}</strong>
+    <strong *ngIf="item.sale_price == '0.00'">¥ {{item.chunbo_price}}</strong>
+    <del *ngIf="item.sale_price !== '0.00'">¥ {{item.chunbo_price}}</del>
+  </p>
+  <p class="num">{{item.specifications}}</p>
+  <div class="icon_pop">
+  </div>
+</li>

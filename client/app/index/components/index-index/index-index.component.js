@@ -13,7 +13,8 @@ import { IndexLcListComponent } from '../index-lc-list/index-lc-list.component';
   selector: 'index',
   template: template,
   directives: [ROUTER_DIRECTIVES, IndexLcListComponent],
-  changeDetection: ChangeDetectionStrategy.Detached
+  changeDetection: ChangeDetectionStrategy.Detached,
+  // styleUrls:['client/app/index/components/index-index/w.css']
 })
 export class IndexComponent {
   constructor(userService: UserService, indexService: IndexService) {
@@ -27,6 +28,6 @@ export class IndexComponent {
   }
 
   getRemoteIndex() {
-    return this._postService.remoteIndex;
+    return this._indexService.remoteLc;
   }
 }

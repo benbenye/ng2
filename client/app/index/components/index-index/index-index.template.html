@@ -1,3 +1,5 @@
+<link rel="stylesheet" href="http://static.chunboimg.com/css/index.css?v=20160809000002">
+<link rel="stylesheet" href="http://static.chunboimg.com/css/style.css?v=20160809000002">
 <div class="list">
-  <lc-list *ngFor="let post of getRemoteIndex() | async" [index]="index"></lc-list>
+  <index-lc-list *ngFor="let index of getRemoteIndex() | async" [index]="index"></index-lc-list>
 </div>
