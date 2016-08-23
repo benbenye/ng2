@@ -18,8 +18,8 @@ app.use(proxy({
 }));
 
 app.use(proxy({
-  host: 'http://search.chunbo.com',
-  match:/^\/list_solr/
+  host: 'http://api.chunbo.com',
+  match:/^\/Category/
 }));
 
 app.use(bodyParser());

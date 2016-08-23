@@ -3,11 +3,12 @@ import { ROUTER_DIRECTIVES, Router } from '@angular/router';
 
 import template from './menu.template.html';
 import { UserService } from '../../../auth';
+import { CategoryListComponent } from '../../../category/components/category-list.component';
 
 @Component({
   selector: 'top-menu',
   template: template,
-  directives: [ROUTER_DIRECTIVES],
+  directives: [ROUTER_DIRECTIVES, CategoryListComponent],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class MenuComponent {
