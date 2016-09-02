@@ -16,7 +16,9 @@ export class MenuComponent {
     this.userService = userService;
     this._router = router;
   }
-
+  ngOnInit() {
+    console.log('ddd')
+  }
   getLoggedIn() {
     return this.userService.getLoggedIn();
   }

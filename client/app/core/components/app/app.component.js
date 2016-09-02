@@ -14,4 +14,8 @@ export class AppComponent {
   constructor(@Inject('ENVIRONMENT') environment) {
     this.environment = environment;
   }
+
+  ngOnInit() {
+    console.log('aaa')
+  }
 }

@@ -13,6 +13,8 @@ import { AUTH_PROVIDERS } from './app/auth';
 import { POSTS_PROVIDERS } from './app/posts';
 
 import { INDEX_PROVIDERS } from './app/index';
+import { CATEGORYLSIT_PROVIDERS } from './app/category';
+
 
 if (ENVIRONMENT === 'production') {
   enableProdMode();
@@ -28,6 +30,7 @@ bootstrap(AppComponent, [
   POSTS_PROVIDERS,
   INDEX_PROVIDERS,
   CORE_PROVIDERS,
+  CATEGORYLSIT_PROVIDERS,
 
   { provide: LocationStrategy, useClass: HashLocationStrategy },
   { provide: 'ENVIRONMENT', useValue: ENVIRONMENT }

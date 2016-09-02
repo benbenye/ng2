@@ -8,11 +8,12 @@ import template from './index-index.template.html';
 import { UserService } from '../../../auth';
 import { IndexService } from '../../services/index/index.service';
 import { IndexLcListComponent } from '../index-lc-list/index-lc-list.component';
+import { IndexBannerComponent } from '../../../banner/components/index-banner/index-banner.component';
 
 @Component({
   selector: 'index',
   template: template,
-  directives: [ROUTER_DIRECTIVES, IndexLcListComponent],
+  directives: [ROUTER_DIRECTIVES, IndexLcListComponent, IndexBannerComponent],
   changeDetection: ChangeDetectionStrategy.Detached,
   // styleUrls:['client/app/index/components/index-index/w.css']
 })
@@ -27,7 +28,10 @@ export class IndexComponent {
     this._indexService.refreshIndex();
   }
 
-  getRemoteIndex() {
+  getRemoteLc() {
     return this._indexService.remoteLc;
+  }
+  getRmoteFoucs(){
+    return this._indexService.remoteFocus;
   }
 }

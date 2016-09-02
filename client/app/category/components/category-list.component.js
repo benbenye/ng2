@@ -1,7 +1,7 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { ROUTER_DIRECTIVES } from '@angular/router';
 
-import template from './category-list.html';
+import template from './category-list.template.html';
 import { UserService } from '../../auth';
 import { CategoryListService } from '../services/category-list.service';
 
@@ -18,12 +18,11 @@ export class CategoryListComponent {
     this._categoryListService = categoryListService;
   }
 
-
   ngOnInit() {
     this._categoryListService.refreshIndex();
   }
 
   getRemoteIndex() {
-    return this._categoryListService;
+    return this._categoryListService.remoteCategoryList;
   }
 }

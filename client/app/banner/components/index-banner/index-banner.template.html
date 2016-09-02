@@ -1,0 +1,17 @@
+<div class="banner">
+  <div class="banner_inner">
+    <div class="banner_over">
+      <ul>
+        <li *ngFor="let item of indexBanner; let i=index;">
+          <a *ngIf="i==0" target="_blank" href="/act/6441?src=index-lbt-p1&amp;src_pos=d1" ><img
+          src="http://i1.chunboimg.com/{{item.image_url}})" alt="{{item.title}}"></a>
+          <a *ngIf="i!=0" target="_blank" href="/act/6441?src=index-lbt-p1&amp;src_pos=d1"  style="display: none;" ><img
+          src="http://i1.chunboimg.com/{{item.image_url}})" alt="{{item.title}}"></a>
+        </li>
+      </ul>
+      <div class="banner_head">
+      <a *ngFor="let item of indexBanner" href="/act/6441?src=index-lbt-p1&amp;src_pos=d2" target="_blank" class="">{{item.title}}</a>
+      </div>
+    </div>
+  </div>
+</div>

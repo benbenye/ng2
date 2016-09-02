@@ -1,6 +1,31 @@
 <link rel="stylesheet" href="http://static.chunboimg.com/css/index.css?v=20160809000002">
 <link rel="stylesheet" href="http://static.chunboimg.com/css/style.css?v=20160809000002">
+<index-banner [indexBanner]="getRmoteFoucs() | async"></index-banner>
 <div class="list">
-  <div *ngIf="getRemoteIndex().length == 0">loading</div>
-  <index-lc-list *ngFor="let index of getRemoteIndex() | async" [index]="index"></index-lc-list>
+  <div *ngIf="(getRemoteLc() | async).length == 0">loading</div>
+  <index-lc-list *ngFor="let index of getRemoteLc() | async" [index]="index"></index-lc-list>
+  <div class="screen w_1080">
+    <div class="screen_title">
+      <h2>精选大厨食谱</h2>
+      <p>食物分享是每个中国人最传统、最乡情的交流方式，唯有携手才能与家人和朋友寻找并分享美味。</p>
+    </div>
+    <div class="food_list">
+      <ul class="clearfix">
+        <li>
+          <a target="_blank" class="cb-lazy-loading-bg" href="http://www.chunbo.com/Cookbook/detail/cookbook_id/1575/recommend_id/,,?src=index-btcook-A&amp;src_pos=d1"><img data-original="http://i3.chunboimg.com/group1/M00/06/77/Cv4IdVaTh7WAe-HYAALU-B90WCw967_342_228.jpg" class="img cb-lazy cb-lazy-img loaded" width="342" height="228" src="http://i3.chunboimg.com/group1/M00/06/77/Cv4IdVaTh7WAe-HYAALU-B90WCw967_342_228.jpg"></a>
+          <p class="name">香嫩鸡肉料理</p>
+          <h3><a target="_blank" href="http://www.chunbo.com/Cookbook/detail/cookbook_id/1575/recommend_id/,,">迷迭香草烤整鸡</a></h3>
+          <p class="desc">迷迭香带有清甜松木香的气味，外观宛若一簇松针，郁郁葱葱。烤制过程中用它提味，外酥里嫩，充满童话味道，令人食指大动。 </p>
+          <p class="img_list">
+            <a target="_blank" href="/cookbook/detail/cookbook_id/1813?src=index-btcook-A&amp;src_pos=d1">
+              <img src="http://i2.chunboimg.com/group1/M00/01/E5/Cv4IbFV-enGAZbDFAAM0sIJLEqE919_338_228.jpg" alt="">
+            </a><a target="_blank" href="/cookbook/detail/cookbook_id/1533?src=index-btcook-A&amp;src_pos=d1">
+            <img src="http://i3.chunboimg.com/group1/M00/00/29/Cv4IbFSxIziAOp1aAAKu8xwKSJg929_338_228.jpg" alt="">
+          </a>                    </p>
+        </li></ul>
+    </div>
+    <div class="screen_footer">
+      <a target="_blank" href="/CookbookIndex/index?src=index-btcook-B" class="btn btn_green">浏览所有大厨食谱</a>
+    </div>
+  </div>
 </div>
