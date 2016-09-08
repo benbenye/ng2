@@ -30,6 +30,10 @@ module.exports = {
         }
       },
       {
+        test: /\.css$/,
+        loader: 'to-string!css-loader'
+      },
+      {
         test: /\.html$/,
         loader: 'raw?minimize=false'
       },
