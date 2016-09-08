@@ -1,8 +1,12 @@
 import { IndexService } from './services/index/index.service';
 
-const INDEX_PROVIDERS = [IndexService];
+import { IndexComponent } from './components/index-index/index-index.component'
+import { IndexLcListComponent } from './components/index-lc-list/index-lc-list.component'
 
-export {
-  IndexService,
-  INDEX_PROVIDERS
-};
+export {IndexService}
+
+export const INDEX_PROVIDERS = [IndexService];
+export const INDEX_DECLARATIONS = [
+  IndexComponent,
+  IndexLcListComponent,
+];

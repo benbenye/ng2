@@ -3,9 +3,11 @@
  */
 import { CategoryListService } from './services/category-list.service';
 
-const CATEGORYLSIT_PROVIDERS = [CategoryListService];
+import { CategoryListComponent } from './components/category-list.component'
 
-export {
-  CategoryListService,
-  CATEGORYLSIT_PROVIDERS
-};
+export {CategoryListService}
+
+export const CATEGORYLSIT_PROVIDERS = [CategoryListService];
+export const CATEGORYLIST_DECLARATIONS = [
+  CategoryListComponent,
+];

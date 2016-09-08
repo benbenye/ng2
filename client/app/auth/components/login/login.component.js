@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { REACTIVE_FORM_DIRECTIVES, FormBuilder, Validators } from '@angular/forms';
+import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 
 import template from './login.template.html';
@@ -9,7 +9,6 @@ import { validatorFactory } from '../../../posts/validator';
 @Component({
   selector: 'login',
   template: template,
-  directives: [REACTIVE_FORM_DIRECTIVES]
 })
 export class LoginComponent {
 

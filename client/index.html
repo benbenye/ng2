@@ -38,7 +38,6 @@
         var J = {};
         var isQuery = window.Zepto || window.jQuery ? true: false;
         var timerAry = [];
-        var o = "mdownloadAppPlugInskip";
 
         function bindEvent(P, O, N) {
             if (isQuery) {
@@ -101,8 +100,9 @@
                 downAppIos: "https://itunes.apple.com/us/app/chun-bo/id967139095?mt=8",
                 downWeixin: "http://www.chunbo.com/app/check_app_source",
                 downIpad: "https://itunes.apple.com/us/app/chun-bo/id967139095?mt=8",
-                inteneUrl: "chunbo://chunbo/startApp?page=3",
+                inteneUrl: "chunbo://chunbo/startApp",
                 inteneUrlParams: null,
+                inteneUrlPage: 3,
                 openAppBtnId: "",
                 closePanelBtnId: "",
                 closePanelId: "",
@@ -124,8 +124,33 @@
             }
             return P
         }
-        function x(P, N) {
-            var T = h(P);
+
+        function getSchemaUrlWithParams(P) {
+            var Y = [];
+            var S = P.inteneUrlParams;
+            var ParamsStr = "";
+
+            if (S && !S.sourceType && !S.sourceValue) {
+                S.sourceType = P.sourceType;
+                S.sourceValue = P.sourceValue
+            }
+            if (S) {
+                for (var X in S) {
+                    if (X && S[X]) {
+                        Y.push('"' + X + '":"' + S[X] + '"')
+                    }
+                }
+            }
+//            不调用默认参数,只有传参里面有值才添加到params
+            if (Y.length) {
+                var O = "{" + Y.join(",") + "}";
+                ParamsStr = "&params=" + O
+            }
+
+            return (P.inteneUrl + "?page=" + P.inteneUrlPage + ParamsStr)
+        }
+        function tryOpenApp(P, N) {
+            var T = getSchemaUrlWithParams(P);
             var Q = null;
             if (isWeixin) {
                 var O = null;
@@ -164,7 +189,7 @@
             setTimeout(function() {
                 if (N) {
                     var U = setTimeout(function() {
-                        y(R, Q)
+                        openFailTryOpen(R, Q)
                     },
                     1500);
                     timerAry.push(U)
@@ -172,76 +197,17 @@
             },
             100)
         }
-        function y(P, O) {
+        function openFailTryOpen(P, O) {
             var N = Date.now();
             if (P && (N - P) < (1500 + 200)) {
                 window.location.href = O
             }
         }
-        function h(P) {
-            var Y = [];
-            var S = P.inteneUrlParams;
-            var W = {
-                category: "jump",
-                des: "productDetail"
-            };
-            if (P.sourceType && P.sourceValue) {
-                W.sourceType = P.sourceType;
-                W.sourceValue = P.sourceValue;
-                if (S && !S.sourceType && !S.sourceValue) {
-                    S.sourceType = P.sourceType;
-                    S.sourceValue = P.sourceValue
-                }
-            }
-            if (S) {
-                for (var X in S) {
-                    if (X && S[X]) {
-                        Y.push('"' + X + '":"' + S[X] + '"')
-                    }
-                }
-            } else {
-                for (var X in W) {
-                    if (X && W[X]) {
-                        Y.push('"' + X + '":"' + W[X] + '"')
-                    }
-                }
-            }
-            try {
-                var T = MPing.EventSeries.getSeries();
-                if (T) {
-                    var Z = JSON.parse(T);
-                    Z.jdv = encodeURIComponent(e("__jdv"));
-                    Z.unpl = encodeURIComponent(e("unpl"));
-                    Z.mt_xid = encodeURIComponent(e("mt_xid"));
-                    Z.mt_subsite = encodeURIComponent(e("mt_subsite"))
-                }
-                var V = {
-                    mt_subsite: encodeURIComponent(e("mt_subsite")),
-                    __jdv: encodeURIComponent(e("__jdv")),
-                    unpl: encodeURIComponent(e("unpl")),
-                    __jda: encodeURIComponent(e("__jda"))
-                };
-                T = JSON.stringify(Z);
-                Y.push('"m_param":' + T);
-                Y.push('"SE":' + JSON.stringify(V))
-            } catch(U) {
-                Y.push('"m_param":null')
-            }
-            var O = "{" + Y.join(",") + "}";
-            var R = P.inteneUrl.split("?");
-            var N = null;
-            if (R.length == 2) {
-                N = R[0] + "?" + R[1] + "&params=" + O
-            } else {
-                N = R[0] + "?params=" + O
-            }
-            return N
-        }
 
         function bindOpenBtnClick(N) {
             if (N.openAppBtnId) {
                 D[N.openAppBtnId] = N;
-                I(N.openAppBtnId, N.openAppEventId);
+//                I(N.openAppBtnId, N.openAppEventId);
                 bindEvent(N.openAppBtnId, "click",
                 function() {
                     var R = this.getAttribute("id");
@@ -256,18 +222,17 @@
                         t = true
                     }
                     var Q = O.cookieFlag ? "downloadAppPlugIn_downCloseDate_" + O.cookieFlag: "downloadAppPlugIn_downCloseDate";
-                    setCookie(Q, Date.now() + "_2592000000", 60, "/", "m.jd.com");
-                    setCookie(Q, Date.now() + "_2592000000", 60, "/", "m.jd.hk");
-                    x(O, true)
+                    setCookie(Q, Date.now() + "_2592000000", 60, "/", ".chunbo.com");
+                    tryOpenApp(O, true)
                 })
             }
         }
         function bindCloseBtnClick (O) {
             if (O.closePanelBtnId && O.closePanelId) {
                 D[O.closePanelBtnId] = O;
-                I(O.closePanelBtnId, O.closePanelEventId);
+//                I(O.closePanelBtnId, O.closePanelEventId);
                 var S = O.cookieFlag ? "downloadAppPlugIn_downCloseDate_" + O.cookieFlag: "downloadAppPlugIn_downCloseDate";
-                var Q =     getCookieByName(S);
+                var Q = getCookieByName(S);
                 var R = null;
                 if (Q) {
                     R = Q.split("_");
@@ -279,7 +244,7 @@
                     }
                 }
                 var N = Date.now();
-                if (C(O) || (!O.noRecord && R && R.length == 2 && (N - R[0]) < R[1])) {
+                if (!O.noRecord && R && R.length == 2 && (N - R[0]) < R[1]) {
                     document.querySelector("#" + O.closePanelId).style.display = "none";
                     if (O.closeCallblack) {
                         var P = O.closeCallblackSource ? O.closeCallblackSource: null;
@@ -295,8 +260,7 @@
                     var T = D[W];
                     var V = T.cookieFlag ? "downloadAppPlugIn_downCloseDate_" + T.cookieFlag: "downloadAppPlugIn_downCloseDate";
                     if (!T.noRecord) {
-                        setCookie(V, Date.now() + "_259200000", 60, "/", "m.jd.com");
-                        setCookie(V, Date.now() + "_259200000", 60, "/", "m.jd.hk")
+                        setCookie(V, Date.now() + "_259200000", 60, "/", ".chunbo.com");
                     }
                     document.querySelector("#" + T.closePanelId).style.display = "none";
                     if (T.closeCallblack) {
@@ -306,44 +270,13 @@
                 })
             }
         }
-        function C(Q) {
-            var R = UA.indexOf("jdmsxh");
-            var N = UA.indexOf("jdmsxh2");
-            var O = false;
-            if (UA.indexOf("Html5Plus") >= 0 || (R >= 0 && R != N)) {
-                O = true
-            }
 
-            return O
-        }
-        function I(R, O) {
-            try {
-                var Q = document.getElementById(R);
-                var N = Q.className;
-                if (N) {
-                    N = N + " J_ping"
-                } else {
-                    N = "J_ping"
-                }
-                Q.className = N;
-                Q.setAttribute("report-eventid", O);
-                if (UA.indexOf("jdmsxh2") >= 0) {
-                    Q.setAttribute("event_param", 1)
-                } else {
-                    Q.setAttribute("event_param", 0)
-                }
-            } catch(P) {}
-        }
         function E(N) {
             var config = merageConfig(N);
             bindOpenBtnClick(config);
             bindCloseBtnClick (config)
         }
         J.downloadAppPlugIn = E;
-        J.downloadAppPlugInOpenApp = function(N) {
-            var config = merageConfig(N);
-            x(config)
-        }
     })();
 
 

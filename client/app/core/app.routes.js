@@ -11,7 +11,7 @@ import { LoggedOutGuard } from './guards/logged-out.guard';
 import { IndexComponent } from '../index/components/index-index/index-index.component'
 
 export const routes = [
-  { path: '', component: IndexComponent, terminal: true },
+  { path: '', component: IndexComponent, pathMatch: 'full' },
   // { path: '', components: PostListComponent, terminal: true },
   { path: 'new', component: PostNewComponent, canActivate: [LoggedInGuard] },
   { path: 'edit/:id', component: PostEditComponent, canActivate: [LoggedInGuard] },
@@ -19,4 +19,4 @@ export const routes = [
   { path: 'login', component: LoginComponent, canActivate: [LoggedOutGuard] }
 ];
 
-export const APP_ROUTES_PROVIDER = provideRouter(routes);
+// export const APP_ROUTES_PROVIDER = provideRouter(routes);

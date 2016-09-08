@@ -2,12 +2,10 @@ import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import template from './post-edit.template.html';
 import { PostService } from '../../services/post/post.service';
-import { PostFormComponent } from '../post-form/post-form.component';
 
 @Component({
   selector: 'post-edit',
   template: template,
-  directives: [PostFormComponent]
 })
 export class PostEditComponent {
   constructor(postService: PostService, route: ActivatedRoute, router: Router) {
@@ -19,7 +17,7 @@ export class PostEditComponent {
   ngOnInit() {
     this.post = this._route.params
       .map(params => params.id)
-      .flatMap((id) => {
+      .mergeMap((id) => {
         return this._postService.getPost(id);
       });
   }

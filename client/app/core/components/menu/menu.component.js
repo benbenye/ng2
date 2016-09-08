@@ -1,5 +1,5 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core';
-import { ROUTER_DIRECTIVES, Router } from '@angular/router';
+import { Router } from '@angular/router';
 
 import template from './menu.template.html';
 import { UserService } from '../../../auth';
@@ -8,7 +8,7 @@ import { CategoryListComponent } from '../../../category/components/category-lis
 @Component({
   selector: 'top-menu',
   template: template,
-  directives: [ROUTER_DIRECTIVES, CategoryListComponent],
+  directives: [ CategoryListComponent],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class MenuComponent {

@@ -1,6 +1,6 @@
 <link rel="stylesheet" href="http://static.chunboimg.com/css/index.css?v=20160809000002">
 <link rel="stylesheet" href="http://static.chunboimg.com/css/style.css?v=20160809000002">
-<index-banner [indexBanner]="getRmoteFoucs() | async"></index-banner>
+  <index-banner [indexBanner]="getRmoteFoucs() | async"></index-banner>
 <div class="list">
   <div *ngIf="(getRemoteLc() | async).length == 0">loading</div>
   <index-lc-list *ngFor="let index of getRemoteLc() | async" [index]="index"></index-lc-list>
