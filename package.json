@@ -33,19 +33,21 @@
     "koa-bodyparser": "2.2.0",
     "koa-jwt": "1.2.0",
     "koa-router": "5.4.0",
+    "koa-pixie-proxy": "^1.0.7",
+    "koa-proxy": "^0.6.0",
     "koa-send": "^3.2.0",
     "koa-static": "2.0.0",
     "node-uuid": "1.4.7"
   },
   "devDependencies": {
-    "@angular/common": "2.0.0-rc.6",
-    "@angular/compiler": "2.0.0-rc.6",
-    "@angular/core": "2.0.0-rc.6",
-    "@angular/forms": "2.0.0-rc.6",
-    "@angular/http": "2.0.0-rc.6",
-    "@angular/platform-browser": "2.0.0-rc.6",
-    "@angular/platform-browser-dynamic": "2.0.0-rc.6",
-    "@angular/router": "3.0.0-rc.2",
+    "@angular/common": "2.0.0",
+    "@angular/compiler": "2.0.0",
+    "@angular/core": "2.0.0",
+    "@angular/forms": "2.0.0",
+    "@angular/http": "2.0.0",
+    "@angular/platform-browser": "2.0.0",
+    "@angular/platform-browser-dynamic": "2.0.0",
+    "@angular/router": "3.0.0",
     "babel-core": "6.14.0",
     "babel-eslint": "6.1.2",
     "babel-loader": "6.2.5",
@@ -82,10 +84,10 @@
     "raw-loader": "0.5.1",
     "reflect-metadata": "0.1.8",
     "run-sequence": "1.2.2",
-    "rxjs": "5.0.0-beta.11",
+    "rxjs": "5.0.0-beta.12",
     "to-string-loader": "^1.1.4",
     "validate.js": "0.10.0",
     "webpack": "1.13.2",
-    "zone.js": "0.6.17"
+    "zone.js": "^0.6.23"
   }
 }
