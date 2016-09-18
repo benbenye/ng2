@@ -1,49 +1,49 @@
-<div class="header">
-  <div class="header_top">
-    <div class="header_top_inner">
-      <a [routerLink]="['']" class="header_logo"><img src="http://static.chunboimg.com/images/logo_v1.png" alt=""></a>
-      <div class="header_logo_right" cbclick="0-34" id="site_area">杭州 <br><span>切换城市</span></div>
-      <div class="search_box">
-        <input type="text" value="" class="text" placeholder="搜索" id="search_key">
-        <input type="text" class="btn" id="search_key_btn" style="cursor: default;">
-      </div>
-      <div class="header_top_right">
-        <div class="header_cart">
-          <a href="/cart/index?src=0-top-mycart" id="cart_a" target="_blank" class="cart_a">我的购物车
-            <span class="num" style="display: none;">0</span>
-            <span class="icon"></span></a>
+<style>
 
-          <div class="cart_slide" style="display: none;"><input type="hidden" name="headerProductNum"
-                                                                id="headerProductNum" value="0"></div>
-        </div>
-        <div class="header_message clearfix">
-          <div class="header_login">
-            <a [routerLink]="['login']" *ngIf="!(getLoggedIn() | async)" class="green_a" id="red" cbclick="1-1" rel="nofollow">注册</a>
-            <a href="#" (click)="logout()" *ngIf="getLoggedIn() | async" class="green_a" id="red" cbclick="1-1" rel="nofollow">退出</a>
-            <span>|</span>
-            <a [routerLink]="['login']" *ngIf="!(getLoggedIn() | async)" class="green_a" id="login" cbclick="1-2" rel="nofollow">登录</a>
-            <span>|</span>
-          </div>
-          <div class="header_myhome">
-            <a href="/member/index.html?src=0-top-mycb" class="myhome_a" onclick="return showLogin(this);"
-               rel="nofollow">我的春播<span></span></a>
-            <div class="myhome_slide" style="display: none;">
-              <ul>
-                <li><a href="/member/index.html" onclick="return showLogin(this);" rel="nofollow">我的春播</a></li>
-                <li><a href="/orderInfo/index.html" onclick="return showLogin(this);" rel="nofollow">我的订单</a></li>
-                <li><a href="/invitation/index.html" onclick="return showLogin(this);" rel="nofollow">分享基金</a></li>
-                <li><a href="/favorite/index.html" onclick="return showLogin(this);" rel="nofollow">我的心愿单</a></li>
-                <li><a href="/giftcard/index.html" onclick="return showLogin(this);" rel="nofollow">我的春播卡</a></li>
-                <li><a href="/coupons/index.html" onclick="return showLogin(this);" rel="nofollow">我的春播券</a></li>
-                <li><a href="/points/index.html" onclick="return showLogin(this);" rel="nofollow">我的积分</a></li>
-                <li><a href="/gift/index/show_site/1.html" onclick="return showLogin(this);" rel="nofollow">兑换专区</a>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <category-list></category-list>
-</div>
+  header {width: 100%;height: .48rem;border-bottom: 1px solid #ddd;background: #fff;position: relative;z-index: 11;color: #666666;}
+  header .logo {display: block;width: 113px;height: 29px;background: url(http://static.chunboimg.com/m/0.1.0/img/logo.png) no-repeat 0 0;-webkit-background-size: contain;text-indent: -9999px;position: absolute;top: 50%;left: 50%;margin: -14px 0 0 -57px;}
+  header .logo span.up{position: absolute; width: 5px; height: 5px; border-top: 1px solid #5b5b5b; border-right: 1px solid #5b5b5b; -moz-transform:rotate(-45deg); -webkit-transform:rotate(-45deg); transform: rotate(-45deg); top: 50%; margin-top: -2px; right: -10px;}
+  header .logo span.down{position: absolute; width: 5px; height: 5px; border-top: 1px solid #5b5b5b; border-right: 1px solid #5b5b5b; -moz-transform:rotate(135deg); -webkit-transform:rotate(135deg); transform: rotate(135deg); top: 50%; margin-top: -6px; right: -10px;}
+  header .cb-list{display: none; position: absolute; right: 0; left: 0; top: .48rem; background: #fff; z-index: 111111; padding-left: .1rem; padding-right: .1rem;}
+  header .cb-list li{border-top: 1px solid #d8d8d8; padding-top: 10px; padding-bottom: 10px;position: relative;}
+  header .cb-list li:first-child{border-top: none}
+  header .cb-list li:after{content: ""; position: absolute;right: 0.06rem; top: 0; bottom: 0; margin: auto; width: 0.1rem; height: 0.1rem; border-top: 4px solid #CCC; border-right: 4px solid #CCC; -webkit-transform: rotate(45deg); -moz-transform: rotate(45deg); transform: rotate(45deg);}
+  header .cb-list a{display: block; padding-left: 20px; background-position: 5px 6px; background-repeat: no-repeat; background-size: 10px;}
+  header .cb-list a.cb-list-standard{background-image: url(http://static.chunboimg.com/img/i-cb-list-standard.png);}
+  header .cb-list a.cb-list-union{background-image: url(http://static.chunboimg.com/img/i-cb-list-union.png);}
+  header .cb-list a .cb-list-tit{font-size: .16rem; color: #333;}
+  header .cb-list a .cb-list-desc{font-size: .12rem; color: #999;}
+  header .search {box-sizing:border-box;height: .3rem;text-align: center;font-size: .14rem;background: #e8ecef;padding: 0 .24rem; border: 1px solid #ddd;border-radius: 3px; background-image: url(http://static.chunboimg.com/m/0.1.0/img/icon-search.png);background-repeat: no-repeat;background-position: .1rem center;background-size: 12px;}
+  header .search-box{position: absolute;top: 50%;left: .12rem; right: .6rem;margin-top: -0.15rem;display: none;}
+  header .search-box .icon-del{position: absolute;width: .24rem;height: .3rem; right: 0;top: 0; display: none;background-image: url(http://static.chunboimg.com/m/0.1.0/img/icon-search-del.png); background-repeat: no-repeat; background-size: .12rem; background-position: center;}
+  header .search-box.show{display: block;}
+  header .search-focus {text-align: left;}  header .search-act {width: .4rem;height: 24px;position: absolute;top: 50%;right: .1rem;margin-top: -12px;text-align: right;font-size: .16rem;overflow: hidden;display: none;}
+  header .search-btn{    position: absolute;left: .4rem;right: .4rem;line-height: .5rem;text-align: center;}
+  header .search-btn .serarch-text{padding: .05rem .3rem .05rem .5rem;background-color: #e8ecef;color: #999; border: 1px solid #ddd;border-radius: 5px;background-image: url(http://static.chunboimg.com/m/0.1.0/img/icon-search.png);background-repeat: no-repeat;background-size: 20px;background-position: .3rem;}
+  header .location{position: absolute;top: 50%;left: .1rem;margin-top: -12px;font-size: .16rem;overflow: hidden;line-height: 22px;}
+  header .search-act-icon {width: .4rem;height: .48rem;position: absolute;top: 0;right: .1rem;background: url(http://static.chunboimg.com/m/0.1.0/img/i-search.png) no-repeat center;background-size: 50%;text-indent: 9999px;text-align: right;font-size: .16rem;overflow: hidden;}
+  header .search-cancel,
+  header .search-cancel-v{width: .4rem;height: 24px;position: absolute;top: 50%;right: .1rem;font-size: .16rem;margin-top: -12px;display: none;color: #22bc69}
+  header .search-filter-act, header .set-act {width: .4rem;height: 24px;position: absolute;top: 50%;right: .1rem;margin-top: -12px;text-align: right;font-size: .16rem;}
+  header .back {position: absolute;left: 0;top: 0;bottom: 0;width: 0.4rem;}
+  header .back:before {content: "";position: absolute;top: 0;bottom: 0;margin: auto;left: 0.12rem;border-left: 4px solid #c7c7c7;border-top: 4px solid #c7c7c7;width: 0.14rem;height: 0.14rem;-webkit-transform: rotate(-45deg);}
+  header h1 {height: .48rem;line-height: .48rem;overflow: hidden;position: absolute; left: .4rem; right: .4rem; text-align: center;white-space: nowrap;overflow: hidden;text-overflow: ellipsis;}
+  header .link-right {width: .9rem;height: 24px;position: absolute;top: 50%;right: .1rem;margin-top: -12px;text-align: right;font-size: .15rem;}
+
+</style>
+<header>
+  <div class="location" cbclick="0-34" id="site_area"><a href="/index?select_city=1"><img width="20" style="margin-right:5px;" alt="地点" src="http://static.pre.chunbo.com:84/images/place.png">苏州</a></div>
+  <a href="javascript:void(0)" class="search-cancel" onclick="goReferer()">取消</a><a href="/" class="logo">春播</a>
+  <div class="search-box"><input type="text" class="search" placeholder="搜索春播商品" id="search_key"> <div class="icon-del"></div></div>
+  <a href="javascript:void(0);" class="search-act-icon"></a>
+</header>
+<nav>
+  <ul class="www_nav">
+    <li><a href="/"><i class="nav-0"></i>首页</a></li>
+    <li><a href="/list/main"><i class="nav-1"></i>分类</a></li>
+    <li><a href="/CookbookIndex/home"><i class="nav-2"></i>美食社</a></li>
+    <li><a href="/cart/"><i class="nav-3"></i>购物车<i class="num" id="AppCartNums" style="display: none;">0</i></a></li>
+    <li><a href="/member/"><i class="nav-4"></i>我的春播</a></li>
+  </ul>
+</nav>
+<!--<category-list></category-list>-->

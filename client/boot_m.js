@@ -9,7 +9,7 @@ import { RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { TranslateModule } from 'ng2-translate/ng2-translate';
 
-import { routes } from './app/core/app.routes';
+import { routes } from './app/core/app.routes_m';
 import { CORE_PROVIDERS, CORE_DECLARATIONS, AppComponent } from './app/core/index_m';
 import { AUTH_PROVIDERS, AUTH_DECLARATIONS } from './app/auth';
 import { POSTS_PROVIDERS, POSTS_DECLARATIONS } from './app/posts';
@@ -18,6 +18,7 @@ import { INDEX_PROVIDERS, INDEX_DECLARATIONS } from './app/index/index_m';
 import { CATEGORYLSIT_PROVIDERS, CATEGORYLIST_DECLARATIONS } from './app/category/index_m';
 import { BANNER_DECLARATIONS } from './app/banner/index_m';
 import { PRODUCTLISTITEM_DECLARATIONS } from './app/product/index_m';
+import { ORDER_DECLARATIONS } from './app/order/index_m';
 
 
 if (ENVIRONMENT === 'production') {
@@ -32,7 +33,8 @@ if (ENVIRONMENT === 'production') {
     INDEX_DECLARATIONS,
     CATEGORYLIST_DECLARATIONS,
     BANNER_DECLARATIONS,
-    PRODUCTLISTITEM_DECLARATIONS
+    PRODUCTLISTITEM_DECLARATIONS,
+    ORDER_DECLARATIONS
   ],
   imports: [
     HttpModule, BrowserModule, FormsModule, ReactiveFormsModule,
