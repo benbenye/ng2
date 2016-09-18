@@ -6,7 +6,7 @@ let config = require('./config').client;
 
 module.exports = function (singleRun) {
   return function () {
-    let gulpStream = gulp.src('./client/boot.less').pipe(less());
+    let gulpStream = gulp.src('./client/**/*.less').pipe(less());
 
     if (singleRun) {
       gulpStream = gulpStream.pipe(cssnano());

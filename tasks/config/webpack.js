@@ -12,6 +12,7 @@ if (coverageEnabled) {
 module.exports = {
   entry: {
     boot: './client/boot.js',
+    boot_m: './client/boot_m.js',
     vendor: './client/vendor.js'
   },
   output: {

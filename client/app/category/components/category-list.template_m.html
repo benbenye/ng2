@@ -1,0 +1,41 @@
+<div *ngIf="(getRemoteIndex() | async).length == 0">loading</div>
+<style>
+  .header_nav .header_nav_inner .nav_all .nav_all_slide{display: flex; flex-direction: column;}
+  .header_nav .header_nav_inner .nav_all .nav_all_slide li{flex-grow: 1;}
+</style>
+<div class="header_nav">
+  <div class="header_nav_inner clearfix">
+    <div class="nav_all">
+      <a href="javascript:void(0)" class="nav_all_a">浏览所有食品<span></span></a>
+      <ul class="nav_all_slide">
+        <li class="" *ngFor="let item of getRemoteIndex() | async">
+          <a href="/list/index?src=index-top-category&amp;cid=1139-0-0" class="nav_all_lia all_site">
+            <img alt="{{item.name}}" src="http://i0.chunboimg.com/{{item.pc_icon}}">
+            {{item.name}}<span></span>
+          </a>
+          <div class="nav_all_lislide" style="display: none;">
+            <div class="nav_all_lislide_inner">
+              <dl *ngFor="let _child of item._child">
+                <dt><a href="/list/index?src=index-top-category&amp;cid=0-1141-0">{{_child.name}}</a></dt>
+                <dd>
+                  <a *ngFor="let _childItem of _child._child" href="/list/index?src=index-top-category&amp;cid=0-0-1143">{{_childItem.name}}</a>
+                </dd>
+              </dl>
+              <div class="last_pic fromiconback"><img
+              src="http://i0.chunboimg.com/group1/M00/04/CD/Cv4IdVZVTLyAcPCKAABsgmUtwoI584.jpg" alt=""></div>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </div>
+    <ul class="header_nav_list clearfix">
+
+      <li class="img_li"><a href="http://www.chunbo.com/helpcenter/index/content_id/101" target="_blank">G20期间杭州市物流配送公告</a>
+      </li>
+
+      <li><a href="/CookbookIndex?src=index-top-cookbook">大厨食谱</a></li>
+      <li><a href="/alliance?src=index-top-alliance">良心联盟</a></li>
+      <li><a href="/standard?src=index-top-standard">春播标准</a></li>
+    </ul>
+  </div>
+</div>

@@ -1,0 +1,49 @@
+<div class="header">
+  <div class="header_top">
+    <div class="header_top_inner">
+      <a [routerLink]="['']" class="header_logo"><img src="http://static.chunboimg.com/images/logo_v1.png" alt=""></a>
+      <div class="header_logo_right" cbclick="0-34" id="site_area">杭州 <br><span>切换城市</span></div>
+      <div class="search_box">
+        <input type="text" value="" class="text" placeholder="搜索" id="search_key">
+        <input type="text" class="btn" id="search_key_btn" style="cursor: default;">
+      </div>
+      <div class="header_top_right">
+        <div class="header_cart">
+          <a href="/cart/index?src=0-top-mycart" id="cart_a" target="_blank" class="cart_a">我的购物车
+            <span class="num" style="display: none;">0</span>
+            <span class="icon"></span></a>
+
+          <div class="cart_slide" style="display: none;"><input type="hidden" name="headerProductNum"
+                                                                id="headerProductNum" value="0"></div>
+        </div>
+        <div class="header_message clearfix">
+          <div class="header_login">
+            <a [routerLink]="['login']" *ngIf="!(getLoggedIn() | async)" class="green_a" id="red" cbclick="1-1" rel="nofollow">注册</a>
+            <a href="#" (click)="logout()" *ngIf="getLoggedIn() | async" class="green_a" id="red" cbclick="1-1" rel="nofollow">退出</a>
+            <span>|</span>
+            <a [routerLink]="['login']" *ngIf="!(getLoggedIn() | async)" class="green_a" id="login" cbclick="1-2" rel="nofollow">登录</a>
+            <span>|</span>
+          </div>
+          <div class="header_myhome">
+            <a href="/member/index.html?src=0-top-mycb" class="myhome_a" onclick="return showLogin(this);"
+               rel="nofollow">我的春播<span></span></a>
+            <div class="myhome_slide" style="display: none;">
+              <ul>
+                <li><a href="/member/index.html" onclick="return showLogin(this);" rel="nofollow">我的春播</a></li>
+                <li><a href="/orderInfo/index.html" onclick="return showLogin(this);" rel="nofollow">我的订单</a></li>
+                <li><a href="/invitation/index.html" onclick="return showLogin(this);" rel="nofollow">分享基金</a></li>
+                <li><a href="/favorite/index.html" onclick="return showLogin(this);" rel="nofollow">我的心愿单</a></li>
+                <li><a href="/giftcard/index.html" onclick="return showLogin(this);" rel="nofollow">我的春播卡</a></li>
+                <li><a href="/coupons/index.html" onclick="return showLogin(this);" rel="nofollow">我的春播券</a></li>
+                <li><a href="/points/index.html" onclick="return showLogin(this);" rel="nofollow">我的积分</a></li>
+                <li><a href="/gift/index/show_site/1.html" onclick="return showLogin(this);" rel="nofollow">兑换专区</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <category-list></category-list>
+</div>
