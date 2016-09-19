@@ -2,7 +2,7 @@
 
 module.exports = {
   client: {
-    source: ['client/**/*.{html,ico,css,js}',  '!**/app/**'],
+    source: ['client/index.html','client/index_m.html', 'client/**/*.{ico,css,js}',  '!**/app/**', '!client/*.js'],
     destination: 'dist/client',
     app: ['client/**/*.js']
   },
