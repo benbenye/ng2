@@ -1,0 +1,108 @@
+<link rel="stylesheet" href="http://127.0.0.1:3000/css/m/address.css">
+<top-menu-title></top-menu-title>
+<!--<a href="" class="no-default-addr"><img src="http://127.0.0.1:3000/m/0.1.0/img/i-tip.png" alt="tips" width="12px">您可以设置一个默认地址,下次结算更方便</a>-->
+<!--<ul class="address-list">-->
+  <!--<li name="265829" id="address_265829">-->
+    <!--<div id="radio_265829" class="radio" onclick="selected_addr(this, 265829)"></div>-->
+    <!--<div id="delivery_info_265829" onclick="selected_addr(this, 265829)">-->
+      <!--<h6><span class="tag company">公司</span>叶婧</h6>-->
+      <!--<p class="city-three"><span class="default">[默认地址]</span>北京市 海淀区 海淀区（五环内）</p>-->
+      <!--<p class="city-address">中关村街道 北四环西路52号方正国际大厦1502</p>-->
+      <!--<p class="address-phone">13141496801</p>-->
+    <!--</div>-->
+    <!--<div class="edit_address">-->
+      <!--编辑-->
+      <!--<input id="address_id" name="address_id" value="/Order/modifyAddress?addr_id=265829" type="hidden">-->
+    <!--</div>-->
+  <!--</li><li name="628081" id="address_628081">-->
+  <!--<div id="radio_628081" class="radio" onclick="selected_addr(this, 628081)"></div>-->
+  <!--<div id="delivery_info_628081" onclick="selected_addr(this, 628081)">-->
+    <!--<h6><span class="tag">家</span>朱乐天</h6>-->
+    <!--<p class="city-three">北京市 昌平区 昌平区（六环外，仅限城区）</p>-->
+    <!--<p class="city-address">回龙观镇天龙苑13号楼2层1单元201号</p>-->
+    <!--<p class="address-phone">13141496801</p>-->
+  <!--</div>-->
+  <!--<div class="edit_address">-->
+    <!--编辑-->
+    <!--<input id="address_id" name="address_id" value="/Order/modifyAddress?addr_id=628081" type="hidden">-->
+  <!--</div>-->
+<!--</li><li name="183475" id="address_183475">-->
+  <!--<div id="radio_183475" class="radio" onclick="selected_addr(this, 183475)"></div>-->
+  <!--<div id="delivery_info_183475" onclick="selected_addr(this, 183475)">-->
+    <!--<h6><span class="tag other">同事家</span>董婵婵</h6>-->
+    <!--<p class="city-three">北京市 昌平区 昌平区（六环外，仅限城区）</p>-->
+    <!--<p class="city-address">龙跃苑东四区9号楼3单元502</p>-->
+    <!--<p class="address-phone">18515589843</p>-->
+  <!--</div>-->
+  <!--<div class="edit_address">-->
+    <!--编辑-->
+    <!--<input id="address_id" name="address_id" value="/Order/modifyAddress?addr_id=183475" type="hidden">-->
+  <!--</div>-->
+<!--</li>-->
+<!--</ul>-->
+<!--<ul class="address-list list-management" id="manage_list">-->
+  <!--<li>-->
+    <!--<h6>叶婧 </h6>-->
+    <!--<p class="city-three">北京 北京市 海淀区 海淀区（五环内）</p>-->
+    <!--<p class="city-address">中关村街道 北四环西路52号方正国际大厦1502</p>-->
+    <!--<p class="address-phone">13141496801</p>-->
+    <!--<div class="edit_address">-->
+      <!--编辑-->
+      <!--<input id="address_id" name="address_id" value="/Order/modifyAddress?addr_id=265829" type="hidden">-->
+    <!--</div>-->
+    <!--<div class="control-address">-->
+      <!--<div class="set-default"><div class="radio"></div>设为默认地址</div>-->
+      <!--<div class="delete"><img src="http://127.0.0.1:3000/m/0.1.0/img/i-delete.png" alt="删除" width="13px"></div>-->
+    <!--</div>-->
+  <!--</li><li class="selected">-->
+    <!--<h6>叶婧 </h6>-->
+    <!--<p class="city-three">北京 北京市 海淀区 海淀区（五环内）</p>-->
+    <!--<p class="city-address">中关村街道 北四环西路52号方正国际大厦1502</p>-->
+    <!--<p class="address-phone">13141496801</p>-->
+    <!--<div class="edit_address">-->
+      <!--编辑-->
+      <!--<input id="address_id" name="address_id" value="/Order/modifyAddress?addr_id=265829" type="hidden">-->
+    <!--</div>-->
+    <!--<div class="control-address">-->
+      <!--<div class="set-default"><div class="radio"></div>设为默认地址</div>-->
+      <!--<div class="delete"><img src="http://127.0.0.1:3000/m/0.1.0/img/i-delete.png" alt="删除" width="13px"></div>-->
+    <!--</div>-->
+  <!--</li></ul>-->
+<!--<div class="address-default-set">-->
+  <!--<a href="/Order/modifyAddress" class="btn-address-add">新建地址</a>-->
+<!--</div>-->
+<ul class="add-address">
+  <li>
+    <input type="text" id="consignee" name="consignee" value="朱乐天" placeholder="收货人">
+  </li>
+  <li class="">
+    <div class="address-input">北京市海淀区海淀区（五环外六环内）</div>
+    <input type="hidden" id="address_code" name="address_code" value="110100_110108_110108-002">
+  </li>
+  <li>
+    <input type="text" id="detail_address" name="address" value="永泰西里29号楼1单元702" placeholder="详细地址">
+  </li>
+  <li>
+    <input type="text" id="phone" name="phone" value="13141496801" placeholder="手机">
+  </li>
+  <li>
+    <input type="text" id="mobile" name="mobile" value="13141496808" placeholder="备用电话（选填）">
+  </li>
+  <li>
+    <span class="use_price_checkbox switch-btn"><i class="switch-spin"></i></span>
+    <input id="chunbo_card" name="chunbo_card" value="-1" type="hidden">
+    春播卡
+    <span class="text-intro" id="chunbo_card_html">可用0.00元</span>
+    <input type="hidden" id="used_chunbo_card" value="0">
+    <input type="hidden" value="0.00" id="origin_chunbo_card">
+  </li>
+  <script type="text/javascript">showAddress(110100, 110108, "110108-002", 'add');</script>
+  <input id="submitAddr" type="submit" value="Submit" style="display:none;">
+</ul>
+
+<!-- 添加标签 -->
+<div class="address-tag">
+  <p>给地址加个标签吧，下次选地址时更方便</p>
+  <div class="inb tag-item">家</div><div class="inb tag-item">公司</div><div class="inb tag-item">+</div>
+</div>
+<button data-toggle="modal" data-target="#myModal">展示模态框</button>

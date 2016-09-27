@@ -15,7 +15,7 @@ import { IndexBannerComponent } from '../../../banner/components/index-banner/in
   template: template,
   directives: [ROUTER_DIRECTIVES, IndexLcListComponent, IndexBannerComponent],
   changeDetection: ChangeDetectionStrategy.Detached,
-  // styleUrls:['client/app/index/components/index-index/w.css']
+  styles: [require('./w.css')]
 })
 export class IndexComponent {
   constructor(userService: UserService, indexService: IndexService) {

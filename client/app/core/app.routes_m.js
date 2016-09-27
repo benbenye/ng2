@@ -10,11 +10,13 @@ import { LoggedOutGuard } from './guards/logged-out.guard';
 
 import { IndexComponent } from '../index/components/index-index/index-index.component_m';
 import { OrderComponent } from '../order/components/order-component_m';
+import { AddressManageComponent } from '../user/components/address-manage/address-manage.component';
 
 export const routes = [
   { path: '', component: IndexComponent, pathMatch: 'full' },
   { path: 'order', component: OrderComponent, pathMatch: 'full' },
-  // { path: '', components: PostListComponent, terminal: true },
+  { path: 'address', component: AddressManageComponent, pathMatch: 'full' },
+  // { path: 'address', components: AddressManageComponent, terminal: true },
   { path: 'new', component: PostNewComponent, canActivate: [LoggedInGuard] },
   { path: 'edit/:id', component: PostEditComponent, canActivate: [LoggedInGuard] },
   { path: 'about', component: AboutComponent },

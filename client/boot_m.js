@@ -19,6 +19,7 @@ import { CATEGORYLSIT_PROVIDERS, CATEGORYLIST_DECLARATIONS } from './app/categor
 import { BANNER_DECLARATIONS } from './app/banner/index_m';
 import { PRODUCTLISTITEM_DECLARATIONS } from './app/product/index_m';
 import { ORDER_DECLARATIONS } from './app/order/index_m';
+import { USER_DECLARATIONS } from './app/user/index_m';
 
 
 if (ENVIRONMENT === 'production') {
@@ -34,7 +35,8 @@ if (ENVIRONMENT === 'production') {
     CATEGORYLIST_DECLARATIONS,
     BANNER_DECLARATIONS,
     PRODUCTLISTITEM_DECLARATIONS,
-    ORDER_DECLARATIONS
+    ORDER_DECLARATIONS,
+    USER_DECLARATIONS
   ],
   imports: [
     HttpModule, BrowserModule, FormsModule, ReactiveFormsModule,

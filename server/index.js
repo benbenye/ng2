@@ -30,6 +30,11 @@ app.use(function *(next){
 app.use(staticServe(config.staticPath));
 
 app.use(proxy({
+  host: 'http://www.uat.chunbo.com',
+  match:/^\/product/
+}))
+
+app.use(proxy({
   host: 'http://cms.chunbo.com',
   match:/^\/CmsHome/
 }));
