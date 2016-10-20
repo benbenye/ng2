@@ -13,6 +13,7 @@ import { routes } from './app/core/app.routes';
 import { CORE_PROVIDERS, CORE_DECLARATIONS, AppComponent } from './app/core';
 import { AUTH_PROVIDERS, AUTH_DECLARATIONS } from './app/auth';
 import { POSTS_PROVIDERS, POSTS_DECLARATIONS } from './app/posts';
+import { ORDER_DECLARATIONS } from './app/order';
 
 import { INDEX_PROVIDERS, INDEX_DECLARATIONS } from './app/index';
 import { CATEGORYLSIT_PROVIDERS, CATEGORYLIST_DECLARATIONS } from './app/category';
@@ -29,6 +30,7 @@ if (ENVIRONMENT === 'production') {
     CORE_DECLARATIONS,
     AUTH_DECLARATIONS,
     POSTS_DECLARATIONS,
+    ORDER_DECLARATIONS,
     INDEX_DECLARATIONS,
     CATEGORYLIST_DECLARATIONS,
     BANNER_DECLARATIONS,

@@ -11,10 +11,12 @@ import { LoggedOutGuard } from './guards/logged-out.guard';
 import { IndexComponent } from '../index/components/index-index/index-index.component_m';
 import { OrderComponent } from '../order/components/order-component_m';
 import { AddressManageComponent } from '../user/components/address-manage/address-manage.component';
+import { CpsLoginRegComponent } from '../topic/components/cps/cps-login-reg.component';
 
 export const routes = [
   { path: '', component: IndexComponent, pathMatch: 'full' },
   { path: 'order', component: OrderComponent, pathMatch: 'full' },
+  { path: 'topic/cps', component: CpsLoginRegComponent, pathMatch: 'full'},
   { path: 'address', component: AddressManageComponent, pathMatch: 'full' },
   // { path: 'address', components: AddressManageComponent, terminal: true },
   { path: 'new', component: PostNewComponent, canActivate: [LoggedInGuard] },

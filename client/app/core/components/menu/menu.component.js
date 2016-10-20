@@ -9,7 +9,7 @@ import { CategoryListComponent } from '../../../category/components/category-lis
   selector: 'top-menu',
   template: template,
   directives: [ CategoryListComponent],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  styleUrls:['http://127.0.0.1:3000/css/index.css']
 })
 export class MenuComponent {
   constructor(userService: UserService, router: Router) {

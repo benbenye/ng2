@@ -46,4 +46,9 @@
     <li><a href="/member/"><i class="nav-4"></i>我的春播</a></li>
   </ul>
 </nav>
+<a [routerLink]="['login']" *ngIf="!(getLoggedIn() | async)" class="green_a" id="red" cbclick="1-1" rel="nofollow">注册</a>
+            <a href="#" (click)="logout()" *ngIf="getLoggedIn() | async" class="green_a" id="red" cbclick="1-1" rel="nofollow">退出</a>
+            <span>|</span>
+            <a [routerLink]="['login']" *ngIf="!(getLoggedIn() | async)" class="green_a" id="login" cbclick="1-2" rel="nofollow">登录</a>
+            <span>|</span>
 <!--<category-list></category-list>-->

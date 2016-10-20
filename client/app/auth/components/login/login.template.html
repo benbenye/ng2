@@ -7,7 +7,7 @@
 
             <div class="form-group">
                 <label for="login-email">Email</label>
-                <input type="text" formControlName="email" class="form-control" id="login-email">
+                <input type="text" formControlName="email" class="form-control" id="login-email" autocomplete="on">
             </div>
             <div *ngIf="loginForm.controls.email.hasError('required') && loginForm.controls.email.touched" class="alert alert-danger">
                 Email is required
@@ -18,7 +18,7 @@
 
             <div class="form-group">
                 <label for="login-password">Password</label>
-                <input type="password" formControlName="password" class="form-control" id="login-password">
+                <input type="password" formControlName="password" class="form-control" id="login-password" autocomplete="on">
             </div>
             <div *ngIf="loginForm.controls.password.hasError('required') && loginForm.controls.password.touched" class="alert alert-danger">
                 Password is required
