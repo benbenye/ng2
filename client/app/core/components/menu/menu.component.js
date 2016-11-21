@@ -9,7 +9,7 @@ import { CategoryListComponent } from '../../../category/components/category-lis
   selector: 'top-menu',
   template: template,
   directives: [ CategoryListComponent],
-  styleUrls:['http://127.0.0.1:3000/css/index.css']
+  styleUrls:['http://127.0.0.1:3000/css/style.css']
 })
 export class MenuComponent {
   constructor(userService: UserService, router: Router) {

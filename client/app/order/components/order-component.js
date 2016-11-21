@@ -17,8 +17,22 @@ import { UserService } from '../../auth';
 export class OrderComponent {
   constructor(userService: UserService) {
     this.userService = userService;
+    this.addressEdit = true;
   }
 
+  onShowAddressEdit(){
+    console.log(this.addressEdit)
+    this.addressEdit = !this.addressEdit;
+    console.log(this.addressEdit)
+  }
+  isHide(){
+    let classes = {
+      hide: !this.addressEdit,
+      "": this.addressEdit
+    }
+
+    return classes;
+  }
 
   ngOnInit() {
   }

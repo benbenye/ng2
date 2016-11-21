@@ -7,7 +7,7 @@
   <div class="header_nav_inner clearfix">
     <div class="nav_all">
       <a href="javascript:void(0)" class="nav_all_a">浏览所有食品<span></span></a>
-      <ul class="nav_all_slide">
+      <ul class="nav_all_slide" style="display: none">
         <li class="" *ngFor="let item of getRemoteIndex() | async">
           <a href="/list/index?src=index-top-category&amp;cid=1139-0-0" class="nav_all_lia all_site">
             <img alt="{{item.name}}" src="http://i0.chunboimg.com/{{item.pc_icon}}">
