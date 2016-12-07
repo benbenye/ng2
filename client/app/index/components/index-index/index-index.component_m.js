@@ -6,7 +6,7 @@ import { ROUTER_DIRECTIVES } from '@angular/router';
 
 import template from './index-index.template_m.html';
 import { UserService } from '../../../auth';
-import { IndexService } from '../../services/index/index.service';
+import { IndexService } from '../../services/index/index.service_m';
 import { IndexLcListComponent } from '../index-lc-list/index-lc-list.component_m';
 import { IndexBannerComponent } from '../../../banner/components/index-banner/index-banner.component_m';
 

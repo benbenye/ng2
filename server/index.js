@@ -31,7 +31,7 @@ app.use(staticServe(config.staticPath));
 
 app.use(proxy({
   host: 'http://www.uat.chunbo.com',
-  match:/^\/product/
+  match:/^\/product|login/
 }))
 
 app.use(proxy({

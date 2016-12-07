@@ -20,6 +20,8 @@ import { CATEGORYLSIT_PROVIDERS, CATEGORYLIST_DECLARATIONS } from './app/categor
 import { BANNER_DECLARATIONS } from './app/banner';
 import { PRODUCTLISTITEM_DECLARATIONS } from './app/product';
 
+import { GAME_DECLARATIONS, GAME_PROVIDERS } from './app/game';
+
 
 if (ENVIRONMENT === 'production') {
   enableProdMode();
@@ -34,7 +36,8 @@ if (ENVIRONMENT === 'production') {
     INDEX_DECLARATIONS,
     CATEGORYLIST_DECLARATIONS,
     BANNER_DECLARATIONS,
-    PRODUCTLISTITEM_DECLARATIONS
+    PRODUCTLISTITEM_DECLARATIONS,
+    GAME_DECLARATIONS
   ],
   imports: [
     HttpModule, BrowserModule, FormsModule, ReactiveFormsModule,
@@ -49,6 +52,7 @@ if (ENVIRONMENT === 'production') {
     POSTS_PROVIDERS,
     INDEX_PROVIDERS,
     CATEGORYLSIT_PROVIDERS,
+    GAME_PROVIDERS,
     { provide: 'ENVIRONMENT', useValue: ENVIRONMENT }
   ],
   bootstrap: [AppComponent]

@@ -32,12 +32,15 @@
     "koa": "1.2.3",
     "koa-bodyparser": "2.2.0",
     "koa-jwt": "1.2.0",
-    "koa-router": "5.4.0",
     "koa-pixie-proxy": "^1.0.7",
     "koa-proxy": "^0.6.0",
+    "koa-router": "5.4.0",
     "koa-send": "^3.2.0",
     "koa-static": "2.0.0",
-    "node-uuid": "1.4.7"
+    "net": "^1.0.2",
+    "node-uuid": "1.4.7",
+    "request": "^2.79.0",
+    "superagent": "^3.1.0"
   },
   "devDependencies": {
     "@angular/common": "2.0.0",

@@ -15,11 +15,38 @@ export class LoginComponent {
   constructor(userService: UserService, builder: FormBuilder, router: Router) {
     this._userService = userService;
     this._router = router;
+    this._loginWidthCode = true;
+    this._loginWidthAccount = false;
+    this._forgetPw = false;
+    this.codeErrorCount = 0;
 
     this.loginForm = builder.group({
       email: ['', [Validators.required, validatorFactory('email')]],
-      password: ['', Validators.required]
+      password: ['', Validators.required],
+      verifyCode: ['', Validators.required]
     });
+  }
+
+  onSwitch(flag){
+    switch (flag){
+      case 'code':
+        this._loginWidthAccount = false;
+        this._loginWidthCode = true;
+        this._forgetPw = false;
+        break;
+      case 'account':
+        this._loginWidthAccount = true;
+        this._loginWidthCode = false;
+        this._forgetPw = false;
+        break;
+      case 'pw':
+        this._loginWidthAccount = false;
+        this._loginWidthCode = false;
+        this._forgetPw = true;
+        break;
+      default:
+        break;
+    }
   }
 
   onSubmit(credentials) {

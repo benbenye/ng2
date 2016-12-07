@@ -11,14 +11,16 @@ import { LoggedOutGuard } from './guards/logged-out.guard';
 
 import { IndexComponent } from '../index/components/index-index/index-index.component'
 
+import { CrawlerComponent } from '../game/crawler/components/index.component';
+
 export const routes = [
   { path: '', component: IndexComponent, pathMatch: 'full' },
   { path: 'order', component: OrderComponent, pathMatch: 'full' },
-  // { path: '', components: PostListComponent, terminal: true },
+  { path: 'crawler', component: CrawlerComponent, pathMatch: 'full'},
   { path: 'new', component: PostNewComponent, canActivate: [LoggedInGuard] },
   { path: 'edit/:id', component: PostEditComponent, canActivate: [LoggedInGuard] },
   { path: 'about', component: AboutComponent },
-  { path: 'login', component: LoginComponent, canActivate: [LoggedOutGuard] }
+  { path: 'login', component: LoginComponent, canActivate: [LoggedOutGuard] },
 ];
 
 // export const APP_ROUTES_PROVIDER = provideRouter(routes);

@@ -6,6 +6,7 @@ let config = require('./config');
 let jwtMiddleware = require('koa-jwt')({ secret: config.jwt_secret });
 let proxy = require('koa-proxy');
 let pixie = require('koa-pixie-proxy');
+let request = require('superagent');
 
 let posts = [
   {
@@ -32,9 +33,18 @@ function findPost(id) {
   return posts.find((post) => post._id == id);
 }
 
-// router.get('/Category/getCatList',proxy({
-//  url: 'http://api.chunbo.com/Category/getCatList'
-// }));
+router.get('/crawlers', function*() {
+  console.log('s');
+  let result = {success: true};
+  request
+    .get('http://baidu.com')
+    .end(function (err, res) {
+      console.log(res.text)
+      return res.text
+    })
+  console.log('qqq')
+  return result;
+});
 
 
 router.get('/index/:id', function*() {

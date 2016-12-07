@@ -1,30 +1,122 @@
-<div class="row">
-    <div class="col-sm-12">
-        <h1>Login</h1>
+<link rel="stylesheet" href="http://127.0.0.1:3000/css/m/login.css?v=v=2.0.5">
+<style>
 
-        <form (ngSubmit)="onSubmit(loginForm.value)" [formGroup]="loginForm" class="login-form">
-            <p>(Email: admin@gmail.com, password: angular2)</p>
 
-            <div class="form-group">
-                <label for="login-email">Email</label>
-                <input type="text" formControlName="email" class="form-control" id="login-email" autocomplete="on">
+</style>
+<h1>Login</h1>
+<p>(Email: admin@gmail.com, password: angular2)</p>
+
+<div class="login-wrap" *ngIf="_loginWidthCode">
+<!--手机验证码登录-->
+    <form (ngSubmit)="onSubmit(loginForm.value)" [formGroup]="loginForm" class="login-form">
+        <div class="form-line">
+            <input type="text" formControlName="email" class="form-control" id="login-email" autocomplete="on" placeholder="请输入手机号">
+        </div>
+        <div *ngIf="loginForm.controls.email.hasError('required') && loginForm.controls.email.touched" class="alert alert-danger">
+            Email is required
+        </div>
+        <div *ngIf="loginForm.controls.email.hasError('email') && loginForm.controls.email.touched" class="alert alert-danger">
+            Email is invalid
+        </div>
+
+
+        <div class="form-line">
+            <div class="get-sms-code">获取验证码</div>
+           <div class="code-wrap">
+               <input type="number" formControlName="verifyCode" class="form-control" id="login-vercode" placeholder="请输入验证码">
+           </div>
+
+        </div>
+        <div class="form-line" *ngIf="codeErrorCount == 3">
+            <img class="get-ver-code" src="http://chunbo.com/Code/index" style="	float: right;width: 50%;box-sizing: content-box;margin-left: .1rem;border: 1px solid #22bc69;line-height: .4rem;text-align: center;color: #22bc69;background: #fff;"/>
+            <div class="code-wrap">
+                <input type="number" formControlName="verifyCode" class="form-control" id="login-imgvercode" placeholder="请输入有图数字">
             </div>
-            <div *ngIf="loginForm.controls.email.hasError('required') && loginForm.controls.email.touched" class="alert alert-danger">
-                Email is required
-            </div>
-            <div *ngIf="loginForm.controls.email.hasError('email') && loginForm.controls.email.touched" class="alert alert-danger">
-                Email is invalid
+        </div>
+        <!--语音提示-->
+        <div class="voice-code">
+            没收到短信?<span id="get-voice-code">点击接听电话语音验证码</span><span class="voice-code-count">0</span>
+        </div>
+
+
+        <!--<button type="submit" [disabled]="!loginForm.valid" class="login-btn btn-primary">Login</button>-->
+        <div type="submit" class="login-btn btn-primary">登录</div>
+    </form>
+    <div class="switch" (click)="onSwitch('account')">账号密码登录</div>
+</div>
+
+
+<div class="login-wrap" *ngIf="_loginWidthAccount">
+<!--账号密码登录-->
+    <form (ngSubmit)="onSubmit(loginForm.value)" [formGroup]="loginForm" class="login-form">
+        <div class="form-line">
+            <input type="text" formControlName="email" class="form-control" autocomplete="on" placeholder="请输入手机号" name="user_name">
+        </div>
+        <div *ngIf="loginForm.controls.email.hasError('required') && loginForm.controls.email.touched" class="alert alert-danger">
+            Email is required
+        </div>
+        <div *ngIf="loginForm.controls.email.hasError('email') && loginForm.controls.email.touched" class="alert alert-danger">
+            Email is invalid
+        </div>
+
+        <div class="form-line">
+            <input type="password" formControlName="password" class="form-control" id="login-password" autocomplete="on" placeholder="请输入密码" name="password">
+        </div>
+        <div *ngIf="loginForm.controls.password.hasError('required') && loginForm.controls.password.touched" class="alert alert-danger">
+            Password is required
+        </div>
+
+        <!--语音提示-->
+        <div class="voice-code">
+            没收到短信?<span id="get-voice-code">点击接听电话语音验证码</span><span class="voice-code-count">0</span>
+        </div>
+        <button type="submit" class="login-btn btn-primary login-login">登录</button>
+    </form>
+    <div class="switch" (click)="onSwitch('code')">手机验证码登录</div>
+    <div class="switch" (click)="onSwitch('pw')">忘记密码?</div>
+</div>
+
+<div class="login-wrap" *ngIf="_forgetPw">
+<!--忘记密码-->
+    <form (ngSubmit)="onSubmit(loginForm.value)" [formGroup]="loginForm" class="login-form">
+        <div class="form-line">
+            <input type="text" formControlName="email" class="form-control" id="login-email" autocomplete="on" placeholder="请输入手机号">
+        </div>
+        <div *ngIf="loginForm.controls.email.hasError('required') && loginForm.controls.email.touched" class="alert alert-danger">
+            Email is required
+        </div>
+        <div *ngIf="loginForm.controls.email.hasError('email') && loginForm.controls.email.touched" class="alert alert-danger">
+            Email is invalid
+        </div>
+        <div class="form-line">
+            <div class="get-ver-code" style="	float: right;width: 50%;box-sizing: content-box;margin-left: .1rem;border: 1px solid #22bc69;line-height: .4rem;text-align: center;color: #22bc69;background: #fff;">获取验证码</div>
+            <div class="code-wrap">
+                <input type="number" formControlName="verifyCode" class="form-control" id="login-vercode" placeholder="请输入验证码">
             </div>
 
-            <div class="form-group">
-                <label for="login-password">Password</label>
-                <input type="password" formControlName="password" class="form-control" id="login-password" autocomplete="on">
-            </div>
-            <div *ngIf="loginForm.controls.password.hasError('required') && loginForm.controls.password.touched" class="alert alert-danger">
-                Password is required
-            </div>
+        </div>
+        <!--语音提示-->
+        <div class="voice-code">
+            没收到短信?<span id="get-voice-code">点击接听电话语音验证码</span><span class="voice-code-count">0</span>
+        </div>
+        <div class="form-line">
+            <input type="password" formControlName="password" class="form-control" id="login-password" autocomplete="on" placeholder="请输入密码">
+        </div>
+        <div *ngIf="loginForm.controls.password.hasError('required') && loginForm.controls.password.touched" class="alert alert-danger">
+            Password is required
+        </div>
 
-            <button type="submit" [disabled]="!loginForm.valid" class="btn btn-primary">Login</button>
-        </form>
-    </div>
+
+        <div class="form-line" *ngIf="codeErrorCount == 3">
+            <img class="get-ver-code" src="http://chunbo.com/Code/index" style="	float: right;width: 50%;box-sizing: content-box;margin-left: .1rem;border: 1px solid #22bc69;line-height: .4rem;text-align: center;color: #22bc69;background: #fff;"/>
+            <div class="code-wrap">
+                <input type="number" formControlName="verifyCode" class="form-control" id="login-imgvercode" placeholder="请输入有图数字">
+            </div>
+        </div>
+
+
+        <!--<button type="submit" [disabled]="!loginForm.valid" class="login-btn btn-primary">Login</button>-->
+        <div type="submit" class="login-btn btn-primary">登录</div>
+    </form>
+    <div class="switch" (click)="onSwitch('account')">想起密码了?</div>
 </div>

@@ -22,9 +22,10 @@ export class UserService {
 
   login(credentials) {
     return this._http
-      .post('/login', JSON.stringify(credentials), { headers: this._request.getJsonHeaders() })
+      .post('/login/login', JSON.stringify(credentials), { headers: this._request.getJsonHeaders() })
       .map(res => res.json())
       .map((res) => {
+        console.log(res)
         if (res.success) {
           this._storage.setAuthToken(res.auth_token);
           this._loggedIn.next(true);
