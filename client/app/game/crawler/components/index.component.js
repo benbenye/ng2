@@ -13,10 +13,11 @@ import template from './index.template.html';
 export class CrawlerComponent {
   constructor(_service: IndexService){
     this._service = _service;
+    this._cap = [];
   }
   onStart(option) {
     this._service.getHtml().subscribe(ee=>{
-      console.log(ee)
+      if(ee.success) this._cap = ee.arr.reverse();
     })
   }
 }

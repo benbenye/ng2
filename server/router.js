@@ -7,6 +7,7 @@ let jwtMiddleware = require('koa-jwt')({ secret: config.jwt_secret });
 let proxy = require('koa-proxy');
 let pixie = require('koa-pixie-proxy');
 let request = require('superagent');
+let cheerio = require('cheerio');
 
 let posts = [
   {
@@ -35,12 +36,28 @@ function findPost(id) {
 
 router.get('/crawlers', function*() {
   let result = {success: true};
-  request
-    .get('http://www.baidu.com')
-    .end(function (err, res) {
-      console.log(res.text)
-      return res
-    })
+  let ss = request.get('http://m.neihanlu.com/manhua/ZhenHunJie/');
+  let _result = yield ss;
+  let reg = /new Array.*,''\)/;
+  let mhCap = _result.text.match(reg)[0];
+  let _arr = eval(mhCap);
+  result.arr = _arr.map(e=>{
+    let $ = cheerio.load(e);
+
+    return {
+      href:$('a').attr('href'),
+      title:$('a').attr('title')
+    }
+  });
+  result.arr.forEach(e=>{
+    console.log(e)
+    let qq = request.get('http://m.neihanlu.com'+e.href);
+    let qqq = yield qq;
+    qqq = eval(qqq.text.match(/var picTree.*\.jpg\'\]\;/)[0]);
+
+    console.log(qqq)
+  })
+
   this.body = result;
 });
 

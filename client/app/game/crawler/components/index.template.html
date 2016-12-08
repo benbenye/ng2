@@ -1,2 +1,6 @@
 sdjiw
 <div (click)="onStart()">test</div>
+<ul>
+  <!--<li *ngFor="let e of _cap" [innerHTML]="e"></li>-->
+  <li *ngFor="let e of _cap" >{{e.title}}:{{e.href}}</li>
+</ul>

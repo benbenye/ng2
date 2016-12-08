@@ -28,6 +28,7 @@
     "node": "4.4.2"
   },
   "dependencies": {
+    "cheerio": "^0.22.0",
     "jsonwebtoken": "7.1.9",
     "koa": "1.2.3",
     "koa-bodyparser": "2.2.0",
