@@ -34,16 +34,14 @@ function findPost(id) {
 }
 
 router.get('/crawlers', function*() {
-  console.log('s');
   let result = {success: true};
   request
-    .get('http://baidu.com')
+    .get('http://www.baidu.com')
     .end(function (err, res) {
       console.log(res.text)
-      return res.text
+      return res
     })
-  console.log('qqq')
-  return result;
+  this.body = result;
 });
 
 
