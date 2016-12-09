@@ -10,6 +10,7 @@ let charset = require('superagent-charset')
 let request = require('superagent');;
 let cheerio = require('cheerio');
 let fs = require('fs');
+global.Promise = require("bluebird");
 charset(request);
 
 let posts = [
@@ -72,6 +73,7 @@ router.get('/crawlers', function*() {
       let _picRes = yield _pic;
       let path = 'imgfile/' + result.arr[i].title;
       let imgPath = path+ '/' + j + '.jpg';
+
       fs.writeFile(imgPath, _picRes.body, (err) => {
         if (err){
           fs.mkdir(path, function (err) {
@@ -85,6 +87,7 @@ router.get('/crawlers', function*() {
         console.log('It\'s saved!'+i+'-'+j);
       });
     }
+    console.log(i)
   }
 
 });
