@@ -50,14 +50,10 @@ router.get('/crawlers', function*() {
     info[i].title = $(this).attr('title')
   });
   result.arr = info;
-
-  // 获取单章漫画的所有图片
-  let pics = request.get('http://www.pufei.net'+info[0].href).charset('gbk');
-  let picsRes = yield pics;
-
+  this.body = result;
 
   for(let i = 0, l = result.arr.length-1; i < l; ++i) {
-    let picsReq = request.get('http://www.pufei.net' + info[0].href).charset('gbk');
+    let picsReq = request.get('http://www.pufei.net' + info[i].href).charset('gbk');
     let picsRes = yield picsReq;
     var p = picsRes.text.match(/function base64decode.*/)[0];
     var s = {};
@@ -82,16 +78,15 @@ router.get('/crawlers', function*() {
             if (err) throw err;
             fs.writeFile(imgPath, _picRes.body, (err) => {
               if (err) throw err;
-              console.log('It\'s saved!');
+              console.log('It\'s saved!'+i+'-'+j);
             });
           })
         }
-        console.log('It\'s saved!');
+        console.log('It\'s saved!'+i+'-'+j);
       });
     }
   }
 
-  this.body = result;
 });
 
 
