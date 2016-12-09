@@ -17,7 +17,7 @@ export class CrawlerComponent {
   }
   onStart(option) {
     this._service.getHtml().subscribe(ee=>{
-      if(ee.success) this._cap = ee.arr.reverse();
+      if(ee.success) this._cap = ee.arr;
     })
   }
 }
