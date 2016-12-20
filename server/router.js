@@ -12,6 +12,8 @@ let cheerio = require('cheerio');
 let fs = require('fs');
 global.Promise = require("bluebird");
 charset(request);
+let promisify = require('./lib/promisify');
+console.log(promisify)
 
 let posts = [
   {
@@ -50,11 +52,20 @@ router.get('/crawlers', function*() {
     info[i].href = $(this).attr('href')
     info[i].title = $(this).attr('title')
   });
-  result.arr = info;
-  this.body = result;
 
   for(let i = 0, l = result.arr.length-1; i < l; ++i) {
-    let picsReq = request.get('http://www.pufei.net' + info[i].href).charset('gbk');
+    let picsReq = request.get('http://www.pufei.net' + info[i].href).charset('gbk')
+      .set('Accept','text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8')
+      .set('Accept-Encoding','gzip, deflate, sdch')
+      .set('Accept-Language','zh-CN,zh;q=0.8,en;q=0.6')
+      .set('Cache-Control','no-cache')
+      .set('Connection','keep-alive')
+      .set('Cookie','__cfduid=d8ee8af0943f32d523ae9165ac4ef57351481265253; imgserver=1; playeds=20%7C6526%7C%E9%95%87%E9%AD%82%E8%A1%97%7C171%20%E6%9B%B9%E7%8E%84%E4%BA%AE04%7C1482217980%7C20; Hm_lvt_230837fdf572deef0b702c931922583f=1481265282; Hm_lpvt_230837fdf572deef0b702c931922583f=1482217981')
+      .set('Host','www.pufei.net')
+      .set('Pragma','no-cache')
+      .set('Referer','http','//www.pufei.net/manhua/20/')
+      .set('Upgrade-Insecure-Requests','1')
+      .set('User-Agent','Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/54.0.2840.98 Safari/537.36');
     let picsRes = yield picsReq;
     var p = picsRes.text.match(/function base64decode.*/)[0];
     var s = {};
@@ -69,26 +80,45 @@ router.get('/crawlers', function*() {
     result.arr[i].pic = photosr;
 
     for (let j = 1, jl = result.arr[i].pic.length; j <= jl; ++j) {
-      let _pic = request.get('http://ziniao.zgkouqiang.cn/' + result.arr[i].pic[j]);
+      let _pic = request.get('http://ziniao.zgkouqiang.cn/' + result.arr[i].pic[j])
+        .set('Accept', 'mage/webp,image/*,*/*;q=0.8')
+        .set('Accept-Encoding','gzip, deflate, sdch')
+        .set('Accept-Language','zh-CN,zh;q=0.8,en;q=0.6')
+        .set('Cache-Control','no-cache')
+        .set('Connection','keep-alive')
+        .set('Cookie','__cfduid=daefd4d754d9c58038f7264cdd2b704b81481265253')
+        .set('Host','ziniao.zgkouqiang.cn')
+        .set('Pragma','no-cache')
+        .set('Referer','http,//www.pufei.net'+info[i].href)
+        .set('User-Agent','Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/54.0.2840.98 Safari/537.36');
       let _picRes = yield _pic;
       let path = 'imgfile/' + result.arr[i].title;
       let imgPath = path+ '/' + j + '.jpg';
 
-      fs.writeFile(imgPath, _picRes.body, (err) => {
-        if (err){
-          fs.mkdir(path, function (err) {
-            if (err) throw err;
-            fs.writeFile(imgPath, _picRes.body, (err) => {
-              if (err) throw err;
-              console.log('It\'s saved!'+i+'-'+j);
-            });
-          })
-        }
-        console.log('It\'s saved!'+i+'-'+j);
-      });
+      const writeFileAsync = promisify(fs.writeFile);
+      const mkdirAsync = promisify(fs.mkdir);
+
+      writeFileAsync(imgPath, _picRes.body)
+        .then(function () {
+          console.log(imgPath)
+        })
+        .catch(function () {
+          mkdirAsync(path)
+            .then(function () {
+              writeFileAsync(imgPath, _picRes.body)
+                .then(function () {
+                  console.log(imgPath)
+                })
+                .catch(function (err) {
+                  throw  err;
+                })
+            })
+            .catch();
+        });
     }
-    console.log(i)
   }
+  result.arr = info;
+  this.body = result;
 
 });
 
