@@ -95,7 +95,7 @@ router.get('/crawlers', function*() {
   
   result.arr = info;
   console.log('------------', info.length)
-  for(let i = 0, l = result.arr.length-1; i < l; ++i) {
+  for(let i = 0, l = result.arr.length; i < l; ++i) {
     let picsReq = makeReuest({
       url: 'http://www.pufei.net' + info[i].href,
       cookie:'__cfduid=d8ee8af0943f32d523ae9165ac4ef57351481265253; imgserver=1; playeds=20%7C6526%7C%E9%95%87%E9%AD%82%E8%A1%97%7C171%20%E6%9B%B9%E7%8E%84%E4%BA%AE04%7C1482217980%7C20; Hm_lvt_230837fdf572deef0b702c931922583f=1481265282; Hm_lpvt_230837fdf572deef0b702c931922583f=1482217981',
@@ -157,7 +157,7 @@ router.get('/crawlers', function*() {
             });
         });
         yield (new Promise((res, rej)=>{
-          setTimeout(res, 2000+Math.random())
+          setTimeout(res, 700+Math.random())
         }));
     }
   }
